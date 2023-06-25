@@ -2,7 +2,7 @@
 //  ViewController.m
 //  TFSC-iOSDemo
 //
-//  Created by Gavery on 2023/5/4.
+//  Created by John Connor on 2023/5/4.
 //
 
 #import "ViewController.h"
@@ -103,10 +103,8 @@
 
 -(void)getBalance{
     NSMutableDictionary * paramars = [NSMutableDictionary dictionary];
-    paramars[@"jsonrpc"] = @"2.0";
-    paramars[@"id"] = @"1";
-    paramars[@"method"] = @"get_balance";
-    paramars[@"params"] = @{@"address":@"1GQt9ht8nULrJaeNWAZDLDe6BmxptkG6vs"};
+    paramars[@"type"] = @"get_balance";
+    paramars[@"addr"] = @"1GQt9ht8nULrJaeNWAZDLDe6BmxptkG6vs";
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramars
                                                        options:kNilOptions
                                                          error:NULL];
@@ -115,7 +113,7 @@
     
     NSData *bodyData = [body dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSURL *url = [NSURL URLWithString:@"http://192.168.1.42:41517"];//The RPC node address you built yourself
+    NSURL *url = [NSURL URLWithString:@"http://192.168.1.42:41517/get_balance"];//The RPC node address you built yourself
     
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
